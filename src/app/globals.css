@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/orbitron.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ededed;
+  --font-orbitron: 'Orbitron', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-manrope: var(--font-orbitron);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  color: #ededed;
+  font-family: var(--font-orbitron);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f242d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333a48;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Aerodynamic Secondary Floating Motion (Slow, subtle, flying feel) */
+@keyframes aeroFloat1 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+  }
+  35% {
+    transform: translate3d(14px, -12px, 0) rotate(1.8deg) scale(1.02);
+  }
+  70% {
+    transform: translate3d(-10px, 8px, 0) rotate(-1.2deg) scale(0.98);
+  }
+}
+
+@keyframes aeroFloat2 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+  }
+  40% {
+    transform: translate3d(-12px, -10px, 0) rotate(-1.5deg) scale(1.015);
+  }
+  75% {
+    transform: translate3d(10px, 12px, 0) rotate(1.4deg) scale(0.985);
+  }
+}
+
+@keyframes aeroFloat3 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate3d(16px, 14px, 0) rotate(2deg) scale(1.03);
+  }
+}
+
+@keyframes aeroFloat4 {
+  0%, 100% {
+    transform: translate3d(0px, 0px, 0) rotate(0deg) scale(1);
+  }
+  45% {
+    transform: translate3d(-8px, -14px, 0) rotate(-1.6deg) scale(1.02);
+  }
+}
+
+.animate-aero-float-1 {
+  animation: aeroFloat1 16s ease-in-out infinite;
+}
+
+.animate-aero-float-2 {
+  animation: aeroFloat2 18s ease-in-out infinite;
+}
+
+.animate-aero-float-3 {
+  animation: aeroFloat3 22s ease-in-out infinite;
+}
+
+.animate-aero-float-4 {
+  animation: aeroFloat4 17s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-aero-float-1,
+  .animate-aero-float-2,
+  .animate-aero-float-3,
+  .animate-aero-float-4 {
+    animation: none !important;
+  }
+}
+
+/* =============================================================================
+   SERVICES DECORATIVE FLYING VISUAL — COMPLETE CONTROLS & PLAY BUTTON SUPPRESSION
+   Zero interaction, zero native controls, zero Safari overlay play buttons
+   ============================================================================= */
+.cinematic-flying-visual,
+.cinematic-flying-visual *,
+.cinematic-visual,
+.cinematic-visual * {
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.cinematic-flying-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  border: 0 !important;
+  outline: 0 !important;
+}
+
+.cinematic-flying-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+
+  outline: none !important;
+  border: none !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-enclosure {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-panel {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  clip-path: inset(100%) !important;
+  transform: scale(0) !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  clip-path: inset(100%) !important;
+  transform: scale(0) !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-timeline {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-current-time-display {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-time-remaining-display {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-mute-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+}
+
+.cinematic-flying-video::-webkit-media-controls-volume-slider {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+}
+
+.cinematic-flying-video::-moz-media-controls {
+  display: none !important;
+}
+
+/* Fallback for .cinematic-video class name */
+.cinematic-video {
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  outline: none !important;
+  border: none !important;
+}
+
+.cinematic-video::-webkit-media-controls {
+  display: none !important;
+}
+
+.cinematic-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+.cinematic-video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+
+.cinematic-video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+/* Global protection for all video elements */
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ========================================================================= */
+/* GAMIFIED AUTOMOTIVE TECHNICAL LABEL TYPOGRAPHY (ORBITRON)                 */
+/* ========================================================================= */
+.font-orbitron {
+  font-family: var(--font-orbitron);
+}
+
+.font-tech {
+  font-family: var(--font-orbitron);
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.font-tech-meta {
+  font-family: var(--font-orbitron);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes techActivate {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-tech-activate {
+  animation: techActivate 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
